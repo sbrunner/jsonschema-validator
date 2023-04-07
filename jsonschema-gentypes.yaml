@@ -1,0 +1,18 @@
+headers: |
+  """
+  Automatically generated file from a JSON schema.
+  """
+
+pre_commit:
+  enabled: true
+  arguments:
+    - --color=never
+
+generate:
+  - source: https://json-schema.org/draft-07/schema
+    destination: jsonschema_validate/jsonschema.py
+    root_name: JSONSchema
+    api_arguments:
+      additional_properties: Only explicit
+    name_mapping:
+      _CoreSchemaMetaSchemaObject: JSONSchemaItem
