@@ -9,7 +9,7 @@ help: ## Display this help message
 
 .poetry.timestamps: pyproject.toml poetry.lock
 	poetry --version || pip install --user --ignore-installed --requirement=requirements.txt
-	poetry install --extras=tools --extras=generate --extras=extra
+	poetry install
 	touch $@
 
 .PHONY: prospector
@@ -18,4 +18,4 @@ prospector: .poetry.timestamps # Run Prospector check
 
 .PHONY: pyprest
 pytest: .poetry.timestamps # Run the unit tests
-	poetry run pytest -vv --cov=jsonschema_validate --cov-report=term-missing
+	poetry run pytest -vv --cov=jsonschema_validator --cov-report=term-missing

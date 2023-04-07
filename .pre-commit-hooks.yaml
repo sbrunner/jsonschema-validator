@@ -1,0 +1,5 @@
+- id: jsonschema-validator
+  name: jsonschema validator
+  entry: jsonschema-validator
+  language: python
+  types_or: [yaml, json]

@@ -10,9 +10,7 @@ pre_commit:
 
 generate:
   - source: https://json-schema.org/draft-07/schema
-    destination: jsonschema_validate/jsonschema.py
+    destination: jsonschema_validator/json_schema.py
     root_name: JSONSchema
-    api_arguments:
-      additional_properties: Only explicit
     name_mapping:
       _CoreSchemaMetaSchemaObject: JSONSchemaItem

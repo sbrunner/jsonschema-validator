@@ -1,12 +1,13 @@
+import pytest
 import ruamel.yaml
 import yaml
 
-import jsonschema_jsonschema_validate 
+import jsonschema_validator
 
 
-def test_jsonschema_validate_ruamel():
+def test_validate_ruamel():
     ruamel_yaml = ruamel.yaml.YAML()
-    errors, data = jsonschema_validate(
+    errors, data = jsonschema_validator.validate(
         "test.yaml",
         ruamel_yaml.load(
             """
@@ -36,8 +37,8 @@ root:
     ]
 
 
-def test_jsonschema_validate_yaml():
-    errors, data = jsonschema_validate(
+def test_validate_yaml():
+    errors, data = jsonschema_validator.validate(
         "test.yaml",
         yaml.load(
             """
@@ -68,8 +69,8 @@ root:
     ]
 
 
-def test_jsonschema_validate_deep():
-    errors, data = jsonschema_validate(
+def test_validate_deep():
+    errors, data = jsonschema_validator.validate(
         "test.yaml",
         yaml.load(
             """
@@ -101,7 +102,7 @@ root:
 
 
 def test_default():
-    errors, data = jsonschema_validate(
+    errors, data = jsonschema_validator.validate(
         "test.yaml",
         {},
         {
@@ -115,3 +116,13 @@ def test_default():
         default=True,
     )
     assert data == {"root": "abc"}
+
+
+def test_command_correct():
+    jsonschema_validator.main(["tests/correct.yaml"])
+
+
+def test_command_wrong():
+    with pytest.raises(SystemExit) as result:
+        jsonschema_validator.main(["tests/wrong.yaml"])
+    assert result.value.code == 1, result.value
