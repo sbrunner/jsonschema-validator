@@ -3,8 +3,7 @@ doc-warnings: true
 max-line-length: 110
 
 ignore-paths:
-  - build
-  - jsonschema_validate/jsonschema.py
+  - jsonschema_validator/json_schema.py
 
 pydocstyle:
   disable:

@@ -5,17 +5,18 @@ Module that offer some useful functions to validate the data against a JSON sche
 import argparse
 import json
 import logging
+import os.path
 import re
 import sys
+import urllib.parse
 from typing import Any, Dict, Iterator, List, Optional, Tuple
 from warnings import warn
 
 import jsonschema
 import requests
 import ruamel.yaml
-import urlparse
 
-import jsonschema_validate.jsonschema
+import jsonschema_validator.json_schema
 
 LOG = logging.getLogger(__name__)
 
@@ -36,9 +37,9 @@ def _extend_with_default(
 
     def set_defaults(
         validator: "jsonschema.validators._DefaultTypesDeprecatingMetaClass",
-        properties: Dict[str, jsonschema_validate.jsonschema.JSONSchemaItem],
+        properties: Dict[str, jsonschema_validator.json_schema.JSONSchemaItem],
         instance: Optional[Dict[str, Any]],
-        schema: jsonschema_validate.jsonschema.JSONSchemaItem,
+        schema: jsonschema_validator.json_schema.JSONSchemaItem,
     ) -> Iterator[jsonschema.exceptions.ValidationError]:
         """
         Set the default from the JSON schema to the data.
@@ -165,42 +166,42 @@ class ValidationError(Exception):
         self.data = data
 
 
-def main() -> None:
+def main(argv: Optional[List[str]] = None) -> None:
     """
     Check the JSON ort YAML files against the JSON schema files.
     """
-    argparser = argparse.ArgumentParser("Check the JSON ort YAML files against the JSON schema files")
+    argparser = argparse.ArgumentParser("Check the JSON or YAML files against the JSON schema files")
     argparser.add_argument("--schema", help="The JSON schema")
     argparser.add_argument("--json", action="store_true", help="Parse as JSON")
     argparser.add_argument("--yaml", action="store_true", help="Parse as YAML")
     argparser.add_argument("--timeout", default=30, type=int, help="Timeout in seconds")
     argparser.add_argument("files", nargs="+", help="The files to check")
-    args = argparser.parse_args()
+    args = argparser.parse_args(argv)
 
     if args.json and args.yaml:
         print("You can not specify both --json and --yaml")
-        sys.exit(1)
+        sys.exit(2)
 
-    re_ = re.compile(r".*schema=(\S+)")
+    schema_re = re.compile(r".*schema=(\S+)")
     yaml = ruamel.yaml.YAML()
 
     for file in args.files:
         is_json = args.json
         is_yaml = args.yaml
         if not is_json and not is_yaml:
-            is_json = args.file.endswith(".json")
-            is_yaml = args.file.endswith(".yaml") or args.file.endswith(".yml")
+            is_json = file.endswith(".json")
+            is_yaml = file.endswith(".yaml") or file.endswith(".yml")
 
         if not is_json and not is_yaml:
             print(f"Unknown file type: {file}")
-            sys.exit(1)
+            sys.exit(2)
 
         schema = args.schema
 
         if schema is None and is_yaml:
             with open(file, encoding="utf-8") as data_file:
-                match = re_.match(data_file.readline())
-                if match:
+                match = schema_re.match(data_file.readline().strip())
+                if match is not None:
                     schema = match.group(1)
 
         data: Dict[str, Any] = {}
@@ -211,22 +212,29 @@ def main() -> None:
             with open(file, encoding="utf-8") as data_file:
                 data = json.load(data_file)
 
-        if args.schema is None:
+        if schema is None:
             schema = data.get("$schema")
 
         if schema is None:
             print(f"Could not find the schema for {file}")
+            sys.exit(2)
+
+        schema_data: Dict[str, Any] = {}
+        if urllib.parse.urlparse(schema).scheme == "":
+            if args.schema is None:
+                schema = os.path.join(os.path.dirname(file), schema)
+            with open(schema, encoding="utf-8") as schema_file:
+                schema_data = json.load(schema_file)
+        else:
+            response = requests.get(schema, timeout=args.timeout)
+            if not response.ok:
+                print(f"Could not load the schema {schema}")
+                sys.exit(2)
+
+            schema_data = response.json()
+        results, _ = validate(file, data, schema_data)
+        if results:
+            print(f"Validation errors in {file}:")
+            for result in results:
+                print(result)
             sys.exit(1)
-
-        if schema.startswith("http://"):
-            if urlparse.urlparse(schema).scheme != "":
-                with open(schema, encoding="utf-8") as schema_file:
-                    schema_data = json.load(schema_file)
-            else:
-                response = requests.get(schema, timeout=args.timeout)
-                if not response.ok:
-                    print(f"Could not load the schema {schema}")
-                    sys.exit(1)
-
-                schema_data = response.json()
-        validate(file, data, schema_data)

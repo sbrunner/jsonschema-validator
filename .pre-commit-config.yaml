@@ -10,7 +10,20 @@ ci:
     - jsonschema-gentypes
 
 repos:
-  - repo: https://github.com/camptocamp/jsonschema-gentype
+  - repo: local
+    hooks:
+      - id: jsonschema-validator
+        name: jsonschema validator
+        entry: jsonschema-validator
+        language: python
+        types_or: [yaml, json]
+        files: |
+          (?x)(
+              ^tests/correct\.yaml$
+              ^tests/schema\.yaml$
+          )
+  - repo: https://github.com/camptocamp/jsonschema-gentypes
+    rev: 1.7.2
     hooks:
       - id: jsonschema-gentypes
         files: |
