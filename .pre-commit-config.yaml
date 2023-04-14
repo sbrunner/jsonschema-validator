@@ -8,7 +8,7 @@ ci:
     - poetry-lock
     - ripsecrets
     - jsonschema-gentypes
-
+    - jsonschema-validator
 repos:
   - repo: local
     hooks:
@@ -17,7 +17,7 @@ repos:
         entry: jsonschema-validator
         language: python
         types_or: [yaml, json]
-        files: |
+        files: |-
           (?x)(
               ^tests/correct\.yaml$
               ^tests/schema\.yaml$
@@ -26,7 +26,7 @@ repos:
     rev: 1.7.2
     hooks:
       - id: jsonschema-gentypes
-        files: |
+        files: |-
           (?x)^(
               jsonschema-gentypes\.yaml
           )$
@@ -117,3 +117,11 @@ repos:
           - --tool=pydocstyle
           - --die-on-tool-error
           - --output-format=pylint
+  - repo: https://github.com/sbrunner/jsonschema-validator
+    rev: 0.1.0
+    hooks:
+      - id: jsonschema-validator
+        files: |-
+          (?x)^(
+              ci/config\.yaml
+          )$
