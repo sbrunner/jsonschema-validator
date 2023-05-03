@@ -23,7 +23,7 @@ repos:
               ^tests/schema\.yaml$
           )
   - repo: https://github.com/camptocamp/jsonschema-gentypes
-    rev: 1.7.2
+    rev: 2.1.0
     hooks:
       - id: jsonschema-gentypes
         files: |-
