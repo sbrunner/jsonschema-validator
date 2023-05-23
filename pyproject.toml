@@ -43,7 +43,7 @@ jsonschema-validator = "jsonschema_validator:main"
 [tool.poetry.dependencies]
 python = ">=3.8,<4"
 jsonschema = "4.17.3"
-requests = "2.29.0"
+requests = "2.31.0"
 "ruamel.yaml" = "0.17.22"
 
 [tool.poetry.dev-dependencies]
