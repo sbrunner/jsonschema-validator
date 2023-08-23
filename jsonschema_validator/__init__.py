@@ -9,7 +9,8 @@ import os.path
 import re
 import sys
 import urllib.parse
-from typing import Any, Dict, Iterator, List, Optional, Tuple
+from collections.abc import Iterator
+from typing import Any, Optional
 from warnings import warn
 
 import jsonschema
@@ -37,8 +38,8 @@ def _extend_with_default(
 
     def set_defaults(
         validator: "jsonschema.validators._DefaultTypesDeprecatingMetaClass",
-        properties: Dict[str, jsonschema_validator.json_schema.JSONSchemaItem],
-        instance: Optional[Dict[str, Any]],
+        properties: dict[str, jsonschema_validator.json_schema.JSONSchemaItem],
+        instance: Optional[dict[str, Any]],
         schema: jsonschema_validator.json_schema.JSONSchemaItem,
     ) -> Iterator[jsonschema.exceptions.ValidationError]:
         """
@@ -78,8 +79,8 @@ def _extend_with_default(
 
 
 def validate(
-    filename: str, data: Dict[str, Any], schema: Dict[str, Any], default: bool = False
-) -> Tuple[List[str], Dict[str, Any]]:
+    filename: str, data: dict[str, Any], schema: dict[str, Any], default: bool = False
+) -> tuple[list[str], dict[str, Any]]:
     """
     Validate the YAML, with it's JSON schema.
 
@@ -109,7 +110,7 @@ def validate(
 
     validator = Validator(schema)
 
-    def format_error(error: jsonschema.exceptions.ValidationError) -> List[str]:
+    def format_error(error: jsonschema.exceptions.ValidationError) -> list[str]:
         position = filename
 
         if hasattr(error.instance, "lc"):
@@ -166,7 +167,7 @@ class ValidationError(Exception):
         self.data = data
 
 
-def main(argv: Optional[List[str]] = None) -> None:
+def main(argv: Optional[list[str]] = None) -> None:
     """
     Check the JSON ort YAML files against the JSON schema files.
     """
@@ -204,7 +205,7 @@ def main(argv: Optional[List[str]] = None) -> None:
                 if match is not None:
                     schema = match.group(1)
 
-        data: Dict[str, Any] = {}
+        data: dict[str, Any] = {}
         if is_yaml:
             with open(file, encoding="utf-8") as data_file:
                 data = yaml.load(data_file)
@@ -219,7 +220,7 @@ def main(argv: Optional[List[str]] = None) -> None:
             print(f"Could not find the schema for {file}")
             sys.exit(2)
 
-        schema_data: Dict[str, Any] = {}
+        schema_data: dict[str, Any] = {}
         if urllib.parse.urlparse(schema).scheme == "":
             if args.schema is None:
                 schema = os.path.join(os.path.dirname(file), schema)

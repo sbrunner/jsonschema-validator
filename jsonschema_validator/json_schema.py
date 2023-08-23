@@ -3,7 +3,7 @@ Automatically generated file from a JSON schema.
 """
 
 
-from typing import Any, Dict, List, Literal, TypedDict, Union
+from typing import Any, Literal, TypedDict, Union
 
 CORE_SCHEMA_META_SCHEMA_DEFAULT = True
 """ Default value of the field path 'JSONSchema' """
@@ -35,7 +35,7 @@ JSONSchemaItem = TypedDict(
         "readOnly": bool,
         # default: False
         "writeOnly": bool,
-        "examples": List[Any],
+        "examples": list[Any],
         # exclusiveMinimum: 0
         "multipleOf": Union[int, float],
         "maximum": Union[int, float],
@@ -60,21 +60,21 @@ JSONSchemaItem = TypedDict(
         "additionalProperties": "JSONSchema",
         # default:
         #   {}
-        "definitions": Dict[str, "JSONSchema"],
+        "definitions": dict[str, "JSONSchema"],
         # default:
         #   {}
-        "properties": Dict[str, "JSONSchema"],
+        "properties": dict[str, "JSONSchema"],
         # propertyNames:
         #   format: regex
         # default:
         #   {}
-        "patternProperties": Dict[str, "JSONSchema"],
-        "dependencies": Dict[str, Union["JSONSchema", "_StringArray"]],
+        "patternProperties": dict[str, "JSONSchema"],
+        "dependencies": dict[str, Union["JSONSchema", "_StringArray"]],
         "propertyNames": "JSONSchema",
         "const": Any,
         # minItems: 1
         # uniqueItems: True
-        "enum": List[Any],
+        "enum": list[Any],
         "type": Union["_SimpleTypes", "_CoreSchemaMetaSchemaObjectTypeAnyof1"],
         "format": str,
         "contentMediaType": str,
@@ -91,7 +91,7 @@ JSONSchemaItem = TypedDict(
 )
 
 
-_CORE_SCHEMA_META_SCHEMA_OBJECT_DEFINITIONS_DEFAULT: Dict[str, Any] = {}
+_CORE_SCHEMA_META_SCHEMA_OBJECT_DEFINITIONS_DEFAULT: dict[str, Any] = {}
 """ Default value of the field path 'Core schema meta-schema object definitions' """
 
 
@@ -99,11 +99,11 @@ _CORE_SCHEMA_META_SCHEMA_OBJECT_ITEMS_DEFAULT = True
 """ Default value of the field path 'Core schema meta-schema object items' """
 
 
-_CORE_SCHEMA_META_SCHEMA_OBJECT_PATTERNPROPERTIES_DEFAULT: Dict[str, Any] = {}
+_CORE_SCHEMA_META_SCHEMA_OBJECT_PATTERNPROPERTIES_DEFAULT: dict[str, Any] = {}
 """ Default value of the field path 'Core schema meta-schema object patternProperties' """
 
 
-_CORE_SCHEMA_META_SCHEMA_OBJECT_PROPERTIES_DEFAULT: Dict[str, Any] = {}
+_CORE_SCHEMA_META_SCHEMA_OBJECT_PROPERTIES_DEFAULT: dict[str, Any] = {}
 """ Default value of the field path 'Core schema meta-schema object properties' """
 
 
@@ -111,7 +111,7 @@ _CORE_SCHEMA_META_SCHEMA_OBJECT_READONLY_DEFAULT = False
 """ Default value of the field path 'Core schema meta-schema object readOnly' """
 
 
-_CORE_SCHEMA_META_SCHEMA_OBJECT_REQUIRED_DEFAULT: List[Any] = []
+_CORE_SCHEMA_META_SCHEMA_OBJECT_REQUIRED_DEFAULT: list[Any] = []
 """ Default value of the field path 'Core schema meta-schema object required' """
 
 
@@ -123,7 +123,7 @@ _CORE_SCHEMA_META_SCHEMA_OBJECT_WRITEONLY_DEFAULT = False
 """ Default value of the field path 'Core schema meta-schema object writeOnly' """
 
 
-_CoreSchemaMetaSchemaObjectTypeAnyof1 = List["_SimpleTypes"]
+_CoreSchemaMetaSchemaObjectTypeAnyof1 = list["_SimpleTypes"]
 """
 minItems: 1
 uniqueItems: True
@@ -150,11 +150,11 @@ _NonNegativeIntegerDefault0Allof1 = int
 """ default: 0 """
 
 
-_STRING_ARRAY_DEFAULT: List[Any] = []
+_STRING_ARRAY_DEFAULT: list[Any] = []
 """ Default value of the field path 'string array' """
 
 
-_SchemaArray = List["JSONSchema"]
+_SchemaArray = list["JSONSchema"]
 """ minItems: 1 """
 
 
@@ -183,7 +183,7 @@ _SIMPLETYPES_STRING: Literal["string"] = "string"
 """The values for the '_SimpleTypes' enum"""
 
 
-_StringArray = List[str]
+_StringArray = list[str]
 """
 uniqueItems: True
 default:
