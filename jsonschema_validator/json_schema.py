@@ -42,21 +42,44 @@ JSONSchemaItem = TypedDict(
         "exclusiveMaximum": Union[int, float],
         "minimum": Union[int, float],
         "exclusiveMinimum": Union[int, float],
+        # minimum: 0
         "maxLength": "_NonNegativeInteger",
+        # minimum: 0
+        # default: 0
         "minLength": "_NonNegativeIntegerDefault0",
         # format: regex
         "pattern": str,
+        # Core schema meta-schema.
+        #
+        # default: True
         "additionalItems": "JSONSchema",
         # default: True
-        "items": Union["JSONSchema", "_SchemaArray"],
+        #
+        # Aggregation type: anyOf
+        "items": "_CoreSchemaMetaSchemaObjectItems",
+        # minimum: 0
         "maxItems": "_NonNegativeInteger",
+        # minimum: 0
+        # default: 0
         "minItems": "_NonNegativeIntegerDefault0",
         # default: False
         "uniqueItems": bool,
+        # Core schema meta-schema.
+        #
+        # default: True
         "contains": "JSONSchema",
+        # minimum: 0
         "maxProperties": "_NonNegativeInteger",
+        # minimum: 0
+        # default: 0
         "minProperties": "_NonNegativeIntegerDefault0",
+        # uniqueItems: True
+        # default:
+        #   []
         "required": "_StringArray",
+        # Core schema meta-schema.
+        #
+        # default: True
         "additionalProperties": "JSONSchema",
         # default:
         #   {}
@@ -69,22 +92,41 @@ JSONSchemaItem = TypedDict(
         # default:
         #   {}
         "patternProperties": dict[str, "JSONSchema"],
-        "dependencies": dict[str, Union["JSONSchema", "_StringArray"]],
+        "dependencies": dict[str, "_CoreSchemaMetaSchemaObjectDependenciesAdditionalproperties"],
+        # Core schema meta-schema.
+        #
+        # default: True
         "propertyNames": "JSONSchema",
         "const": Any,
         # minItems: 1
         # uniqueItems: True
         "enum": list[Any],
-        "type": Union["_SimpleTypes", "_CoreSchemaMetaSchemaObjectTypeAnyof1"],
+        # Aggregation type: anyOf
+        "type": "_CoreSchemaMetaSchemaObjectType",
         "format": str,
         "contentMediaType": str,
         "contentEncoding": str,
+        # Core schema meta-schema.
+        #
+        # default: True
         "if": "JSONSchema",
+        # Core schema meta-schema.
+        #
+        # default: True
         "then": "JSONSchema",
+        # Core schema meta-schema.
+        #
+        # default: True
         "else": "JSONSchema",
+        # minItems: 1
         "allOf": "_SchemaArray",
+        # minItems: 1
         "anyOf": "_SchemaArray",
+        # minItems: 1
         "oneOf": "_SchemaArray",
+        # Core schema meta-schema.
+        #
+        # default: True
         "not": "JSONSchema",
     },
     total=False,
@@ -111,16 +153,28 @@ _CORE_SCHEMA_META_SCHEMA_OBJECT_READONLY_DEFAULT = False
 """ Default value of the field path 'Core schema meta-schema object readOnly' """
 
 
-_CORE_SCHEMA_META_SCHEMA_OBJECT_REQUIRED_DEFAULT: list[Any] = []
-""" Default value of the field path 'Core schema meta-schema object required' """
-
-
 _CORE_SCHEMA_META_SCHEMA_OBJECT_UNIQUEITEMS_DEFAULT = False
 """ Default value of the field path 'Core schema meta-schema object uniqueItems' """
 
 
 _CORE_SCHEMA_META_SCHEMA_OBJECT_WRITEONLY_DEFAULT = False
 """ Default value of the field path 'Core schema meta-schema object writeOnly' """
+
+
+_CoreSchemaMetaSchemaObjectDependenciesAdditionalproperties = Union["JSONSchema", "_StringArray"]
+""" Aggregation type: anyOf """
+
+
+_CoreSchemaMetaSchemaObjectItems = Union["JSONSchema", "_SchemaArray"]
+"""
+default: True
+
+Aggregation type: anyOf
+"""
+
+
+_CoreSchemaMetaSchemaObjectType = Union["_SimpleTypes", "_CoreSchemaMetaSchemaObjectTypeAnyof1"]
+""" Aggregation type: anyOf """
 
 
 _CoreSchemaMetaSchemaObjectTypeAnyof1 = list["_SimpleTypes"]
@@ -130,24 +184,19 @@ uniqueItems: True
 """
 
 
-_NON_NEGATIVE_INTEGER_DEFAULT0_ALLOF1_DEFAULT = 0
-""" Default value of the field path 'non negative integer default0 allof1' """
+_NON_NEGATIVE_INTEGER_DEFAULT0_DEFAULT = 0
+""" Default value of the field path 'non negative integer default0' """
 
 
 _NonNegativeInteger = int
 """ minimum: 0 """
 
 
-_NonNegativeIntegerDefault0 = Union["_NonNegativeInteger", "_NonNegativeIntegerDefault0Allof1"]
+_NonNegativeIntegerDefault0 = int
 """
-WARNING: PEP 544 does not support an Intersection type,
-so `allOf` is interpreted as a `Union` for now.
-See: https://github.com/camptocamp/jsonschema-gentypes/issues/8
+minimum: 0
+default: 0
 """
-
-
-_NonNegativeIntegerDefault0Allof1 = int
-""" default: 0 """
 
 
 _STRING_ARRAY_DEFAULT: list[Any] = []
