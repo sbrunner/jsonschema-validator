@@ -38,10 +38,8 @@ jobs:
       - run: pre-commit run --all-files
       - run: git diff && false
         if: failure()
-      - name: Checks
-        run: c2cciutils-checks
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Print environment information
+        run: c2cciutils-env
 
       - run: make prospector
       - run: make pytest
