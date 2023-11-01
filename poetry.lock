@@ -1214,13 +1214,13 @@ files = [
 
 [[package]]
 name = "ruamel-yaml"
-version = "0.18.3"
+version = "0.18.4"
 description = "ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order"
 optional = false
 python-versions = ">=3"
 files = [
-    {file = "ruamel.yaml-0.18.3-py3-none-any.whl", hash = "sha256:b5d119e1f9678cf90b58f64bbd2a4e78af76860ae39fab3e73323e622b462df9"},
-    {file = "ruamel.yaml-0.18.3.tar.gz", hash = "sha256:36dbbe90390d977f957436570d2bd540bfd600e6ec5a1ea42bcdb9fc7963d802"},
+    {file = "ruamel.yaml-0.18.4-py3-none-any.whl", hash = "sha256:ca864776af7b0cbcbb223c38707a440bfabea926ba5b4163b2ef4991aae8f8c1"},
+    {file = "ruamel.yaml-0.18.4.tar.gz", hash = "sha256:a2778930d2573358f7c43f26e4bd5715015dccebf53c9943ed611200c1e2adcd"},
 ]
 
 [package.dependencies]
@@ -1565,4 +1565,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<4"
-content-hash = "013943d18e0e4ed4b551daa47cadfc3c65206ce2df82551be560a3ca02b1c8ae"
+content-hash = "ef2cc5e4994835445545fea0ae846e20004827f7eb493f4b93c245236f8c739a"
