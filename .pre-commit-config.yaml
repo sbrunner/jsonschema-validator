@@ -60,7 +60,7 @@ repos:
         additional_dependencies:
           - poetry==1.5.1 # pypi
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.5
+    rev: v2.2.6
     hooks:
       - id: codespell
         exclude: ^(.*/)?poetry\.lock$
