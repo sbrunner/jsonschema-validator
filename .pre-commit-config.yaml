@@ -128,7 +128,7 @@ repos:
               ci/config\.yaml
           )$
   - repo: https://github.com/mheap/json-schema-spell-checker
-    rev: master
+    rev: main
     hooks:
       - id: json-schema-spell-checker
         files: ^tests/schema\.json$
