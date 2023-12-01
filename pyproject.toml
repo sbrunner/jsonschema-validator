@@ -40,7 +40,7 @@ jsonschema-validator = "jsonschema_validator:main"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4"
-jsonschema = "4.19.2"
+jsonschema = "4.20.0"
 requests = "2.31.0"
 "ruamel.yaml" = "0.18.5"
 
@@ -52,7 +52,7 @@ types-requests = "2.31.0.10"
 types-pyyaml = "6.0.12.12"
 
 [tool.poetry.group.dev.dependencies]
-prospector-profile-duplicated = "0.3.0"
+prospector-profile-duplicated = "0.4.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning", "poetry-plugin-tweak-dependencies-version", "poetry-plugin-drop-python-upper-constraint"]
