@@ -746,13 +746,13 @@ with-vulture = ["vulture (>=1.5)"]
 
 [[package]]
 name = "prospector-profile-duplicated"
-version = "0.5.1"
+version = "1.1.0"
 description = "Profile that can be used to disable the duplicated or conflict rules between Prospector and other tools"
 optional = false
 python-versions = "*"
 files = [
-    {file = "prospector_profile_duplicated-0.5.1-py2.py3-none-any.whl", hash = "sha256:6770c95f26b309e6abe95b7beaf3790aed3a5181861f55a7295aa764bc20f33e"},
-    {file = "prospector_profile_duplicated-0.5.1.tar.gz", hash = "sha256:0ccb14969212c932c8dc2bcc4a37bef8d3828147ea58a72ddfadbbb1c63eddc1"},
+    {file = "prospector_profile_duplicated-1.1.0-py2.py3-none-any.whl", hash = "sha256:e444dc283a6ceea938c2af344ebf7313912f428259013fe9b35b590b14d1e730"},
+    {file = "prospector_profile_duplicated-1.1.0.tar.gz", hash = "sha256:c057daab1ee78636f212233e23c91518cb69aa5dabc218ec8e99436f95fa5aef"},
 ]
 
 [[package]]
@@ -1563,4 +1563,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<4"
-content-hash = "8cf7d2ac6202c3d1c43a6be6b9c06d5b78adbd2c4a4343e17ebfc70bd086d0be"
+content-hash = "4c817ab1a5ec4bd7e9b749a67aa41dcab601bc09d33b86d6751448a8eb8f6300"
