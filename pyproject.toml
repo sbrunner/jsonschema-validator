@@ -46,13 +46,13 @@ requests = "2.31.0"
 
 [tool.poetry.dev-dependencies]
 prospector = { extras = ["with_mypy", "with_bandit", "with_pyroma"], version = "1.10.3" }
-pytest = "8.0.2"
+pytest = "8.1.1"
 pytest-cov = "4.1.0"
 types-requests = "2.31.0.20240311"
 types-pyyaml = "6.0.12.20240311"
 
 [tool.poetry.group.dev.dependencies]
-prospector-profile-duplicated = "1.1.0"
+prospector-profile-duplicated = "1.2.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning", "poetry-plugin-tweak-dependencies-version", "poetry-plugin-drop-python-upper-constraint"]
