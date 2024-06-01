@@ -23,7 +23,7 @@ repos:
               ^tests/schema\.yaml$
           )
   - repo: https://github.com/camptocamp/jsonschema-gentypes
-    rev: 2.5.0
+    rev: 2.6.0
     hooks:
       - id: jsonschema-gentypes
         files: |-
@@ -60,7 +60,7 @@ repos:
         additional_dependencies:
           - poetry==1.8.2 # pypi
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
+    rev: v2.3.0
     hooks:
       - id: codespell
         exclude: ^(.*/)?poetry\.lock$
