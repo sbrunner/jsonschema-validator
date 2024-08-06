@@ -125,7 +125,7 @@ def validate(
                 if hasattr(curent_data, "lc"):
                     parent = curent_data
             if parent is not None:
-                position = f"{filename}:{parent.lc.line + 1}:{parent.lc.col + 1}"  # type: ignore
+                position = f"{filename}:{parent.lc.line + 1}:{parent.lc.col + 1}"
 
         if error.context:
             results = []
