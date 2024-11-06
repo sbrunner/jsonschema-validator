@@ -34,18 +34,20 @@ Additional features:
 - Export the default provided in the JSON schema.
 
 ```python
-    import ruamel.yaml
-    import pkgutil
-    import jsonschema_validator
+import ruamel.yaml
+import pkgutil
+import jsonschema_validator
+import json
 
-    schema_data = pkgutil.get_data("<package>", "schema.json")
-    with open(filename) as data_file:
-        yaml = ruamel.yaml.YAML()  # type: ignore
-        data = yaml.load(data_file)
-    errors, data = jsonschema_validator.validate(filename, data, schema)
-    if errors:
-        print("\n".join(errors))
-        sys.exit(1)
+schema_data = pkgutil.get_data("<package>", "schema.json")
+schema = json.loads(jsonschema_validator)
+with open(filename) as data_file:
+    yaml = ruamel.yaml.YAML()  # type: ignore
+    data = yaml.load(data_file)
+errors, _ = jsonschema_validator.validate(filename, data, schema)
+if errors:
+    print("\n".join(errors))
+    sys.exit(1)
 ```
 
 ## Pre-commit hooks
