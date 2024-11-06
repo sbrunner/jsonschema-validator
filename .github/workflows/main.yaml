@@ -11,17 +11,15 @@ on:
 
 env:
   HAS_SECRETS: ${{ secrets.HAS_SECRETS }}
-  PYTHON_KEYRING_BACKEND: keyring.backends.null.Keyring
 
 jobs:
-  main:
-    name: Continuous integration
+  pre-commit:
+    name: Pre commit checks
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     if: "!startsWith(github.event.head_commit.message, '[skip ci] ')"
 
     steps:
-      - run: docker system prune --all --force
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -29,9 +27,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-      - run: python3 -m pip install --requirement=ci/requirements.txt
+      - run: python3 -m pip install $(grep pre-commit== ci/requirements.txt)
 
-      - run: pip install -e .
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pre-commit
@@ -46,30 +43,28 @@ jobs:
           path: /tmp/pre-commit.patch
           retention-days: 1
         if: failure()
-      - name: Print environment information
-        run: c2cciutils-env
+
+  main:
+    name: Continuous integration
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    needs: pre-commit
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python3 -m pip install --requirement=ci/requirements.txt
 
       - run: make prospector
       - run: make pytest
 
-      - name: Init pypi
-        run: |-
-          echo "[pypi]" > ~/.pypirc
-          echo "username = ${{ secrets.PYPI_USERNAME }}" >> ~/.pypirc
-          echo "password = ${{ secrets.PYPI_PASSWORD }}" >> ~/.pypirc
-        if: env.HAS_SECRETS == 'HAS_SECRETS'
-
       - name: Publish
         run: c2cciutils-publish
+        if: env.HAS_SECRETS == 'HAS_SECRETS'
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        if: env.HAS_SECRETS == 'HAS_SECRETS'
-      - run: git diff --exit-code --patch > /tmp/dpkg-versions.patch || true
-        if: failure()
-      - uses: actions/upload-artifact@v4
-        with:
-          name: Update dpkg versions list.patch
-          path: /tmp/dpkg-versions.patch
-          retention-days: 1
-        if: failure()
