@@ -12,6 +12,9 @@ on:
 env:
   HAS_SECRETS: ${{ secrets.HAS_SECRETS }}
 
+permissions:
+  id-token: write
+
 jobs:
   pre-commit:
     name: Pre commit checks
