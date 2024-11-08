@@ -67,7 +67,8 @@ jobs:
       - run: make pytest
 
       - name: Publish
-        run: c2cciutils-publish
+        run: tag-publish
         if: env.HAS_SECRETS == 'HAS_SECRETS'
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
