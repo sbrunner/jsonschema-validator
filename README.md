@@ -7,7 +7,7 @@ Tools to generate Python types based on TypedDict from a JSON schema
 install:
 
 ```bash
-python3 -m pip install jsonschema-validator
+python3 -m pip install jsonschema-validator-new
 ```
 
 Convert a JSON schema to a Python file contains the types:

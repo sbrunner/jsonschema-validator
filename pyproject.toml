@@ -14,7 +14,7 @@ ignore_missing_imports = true
 strict = true
 
 [tool.poetry]
-name = "jsonschema-validator"
+name = "jsonschema-validator-new"
 version = "0.0.0"
 description = "Tool to validate files against a JSON Schema"
 readme = "README.md"
