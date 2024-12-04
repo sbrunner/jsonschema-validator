@@ -58,7 +58,7 @@ This project provides pre-commit hooks to automatically generate the files.
 repos:
   - repo: https://github.com/camptocamp/jsonschema-validator
     rev: <version> # Use the ref you want to point at
-    hools:
+    hooks:
       - id: jsonschema-validator
         files: |
           (?x)^(
