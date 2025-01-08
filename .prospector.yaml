@@ -1,9 +1,8 @@
 inherits:
   - duplicated
-strictness: veryhigh
-doc-warnings: true
-max-line-length: 110
-
+  - utils:base
+  - utils:fix
+  - utils:unsafe
 ignore-paths:
   - jsonschema_validator/json_schema.py
 
@@ -33,16 +32,11 @@ pycodestyle:
     - E501 # line too long, duplicated with Pylint
     - N806 # variable in function should be lowercase, duplicated with Pylint
 
-mypy:
-  run: true
-
-bandit:
-  run: true
-  options:
-    config: .bandit.yaml
-
 pyroma:
   run: true
-
-mccabe:
-  run: false
+mypy:
+  options:
+    python-version: '3.9'
+ruff:
+  options:
+    target-version: py39
