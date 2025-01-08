@@ -103,6 +103,7 @@ def validate(
         warn(
             "This is deprecated, use `obj.get('field', schema.FIELD_TYPE_DEFAULT)` instead.",
             DeprecationWarning,
+            stacklevel=2,
         )
         Validator = _extend_with_default(Validator)
 
