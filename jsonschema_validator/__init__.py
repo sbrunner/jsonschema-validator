@@ -1,6 +1,4 @@
-"""
-Module that offer some useful functions to validate the data against a JSON schema.
-"""
+"""Module that offer some useful functions to validate the data against a JSON schema."""
 
 import argparse
 import json
@@ -105,6 +103,7 @@ def validate(
         warn(
             "This is deprecated, use `obj.get('field', schema.FIELD_TYPE_DEFAULT)` instead.",
             DeprecationWarning,
+            stacklevel=2,
         )
         Validator = _extend_with_default(Validator)
 
@@ -151,9 +150,7 @@ def validate(
 
 
 class ValidationError(Exception):
-    """
-    Exception thrown on validation issue.
-    """
+    """Exception thrown on validation issue."""
 
     def __init__(self, message: str, data: Any) -> None:
         """
@@ -168,9 +165,7 @@ class ValidationError(Exception):
 
 
 def main(argv: Optional[list[str]] = None) -> None:
-    """
-    Check the JSON ort YAML files against the JSON schema files.
-    """
+    """Check the JSON ort YAML files against the JSON schema files."""
     argparser = argparse.ArgumentParser("Check the JSON or YAML files against the JSON schema files")
     argparser.add_argument("--schema", help="The JSON schema")
     argparser.add_argument("--json", action="store_true", help="Parse as JSON")
