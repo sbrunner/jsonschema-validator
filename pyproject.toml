@@ -33,10 +33,10 @@ jsonschema-validator = "jsonschema_validator:main"
 python = ">=3.9,<4"
 jsonschema = "4.23.0"
 requests = "2.32.3"
-"ruamel.yaml" = "0.18.7"
+"ruamel.yaml" = "0.18.10"
 
 [tool.poetry.group.dev.dependencies]
-prospector-profile-duplicated = "1.10.0"
+prospector-profile-duplicated = "1.10.4"
 prospector = { extras = ["with_mypy", "with_bandit", "with_pyroma", "with_ruff"], version = "1.13.3" }
 pytest = "8.3.4"
 pytest-cov = "6.0.0"
