@@ -37,12 +37,12 @@ requests = "2.32.3"
 
 [tool.poetry.group.dev.dependencies]
 prospector-profile-duplicated = "1.10.4"
-prospector = { extras = ["with_mypy", "with_bandit", "with_pyroma", "with_ruff"], version = "1.13.3" }
+prospector = { extras = ["with_mypy", "with_bandit", "with_pyroma", "with_ruff"], version = "1.14.0" }
 pytest = "8.3.4"
 pytest-cov = "6.0.0"
 types-requests = "2.32.0.20241016"
 types-pyyaml = "6.0.12.20241230"
-prospector-profile-utils = "1.14.1"
+prospector-profile-utils = "1.17.0"
 
 
 [tool.ruff]
