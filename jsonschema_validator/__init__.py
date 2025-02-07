@@ -139,7 +139,7 @@ def validate(
             )
             return [
                 f"-- {position} "
-                f'{".".join([str(i) for i in error.absolute_path] if error.absolute_path else "/")}: '
+                f"{'.'.join([str(i) for i in error.absolute_path] if error.absolute_path else '/')}: "
                 f"{error.message}{rule}"
             ]
 

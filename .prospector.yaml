@@ -2,7 +2,6 @@ inherits:
   - duplicated
   - utils:base
   - utils:fix
-  - utils:unsafe
 ignore-paths:
   - jsonschema_validator/json_schema.py
 
