@@ -42,7 +42,7 @@ pytest = "8.3.4"
 pytest-cov = "6.0.0"
 types-requests = "2.32.0.20241016"
 types-pyyaml = "6.0.12.20241230"
-prospector-profile-utils = "1.21.4"
+prospector-profile-utils = "1.21.6"
 
 
 [tool.ruff]
