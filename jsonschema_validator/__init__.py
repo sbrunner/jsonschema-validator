@@ -58,7 +58,7 @@ def _extend_with_default(
                         yield from validator.descend(instance, resolved)
                 else:
                     _, resolved = validator.resolver.resolve(ref)
-                    subschema = dict(subschema)  # type: ignore[m] # noqa: PLW2901
+                    subschema = dict(subschema)  # type: ignore[assignment] # noqa: PLW2901
                     subschema.update(resolved)
             if "default" in subschema and instance is not None:
                 instance.setdefault(prop, subschema["default"])
@@ -108,7 +108,7 @@ def validate(
             DeprecationWarning,
             stacklevel=2,
         )
-        Validator = _extend_with_default(Validator)
+        Validator = _extend_with_default(Validator)  # noqa: N806
 
     validator = Validator(schema)
 
@@ -169,7 +169,7 @@ class ValidationError(Exception):
 def main(argv: Optional[list[str]] = None) -> None:
     """Check the JSON ort YAML files against the JSON schema files."""
     argparser = argparse.ArgumentParser("Check the JSON or YAML files against the JSON schema files")
-    argparser.add_argument("--schema", type=Path, help="The JSON schema")
+    argparser.add_argument("--schema", help="The JSON schema")
     argparser.add_argument("--json", action="store_true", help="Parse as JSON")
     argparser.add_argument("--yaml", action="store_true", help="Parse as YAML")
     argparser.add_argument("--timeout", default=30, type=int, help="Timeout in seconds")
@@ -192,14 +192,16 @@ def main(argv: Optional[list[str]] = None) -> None:
 
 def validate_file(
     file: Path,
-    schema: str,
+    schema: Optional[str],
     yaml: ruamel.yaml.YAML,
     timeout: int,
-    schema_re: re.Pattern,
+    schema_re: re.Pattern[str],
     is_json: bool,
     is_yaml: bool,
 ) -> None:
     """Validate the file."""
+    has_arg_schema = schema is not None
+
     if not is_json and not is_yaml:
         is_json = file.suffix == ".json"
         is_yaml = file.suffix in [".yaml", ".yml"]
@@ -231,9 +233,12 @@ def validate_file(
 
     schema_data: dict[str, Any] = {}
     if urllib.parse.urlparse(schema).scheme == "":
-        if schema is None:
-            schema = str(file.parent / schema)
-        with Path(schema).open(encoding="utf-8") as schema_file:
+        if not has_arg_schema:
+            schema_path = file.parent / schema
+            schema = str(schema_path)
+        else:
+            schema_path = Path(schema)
+        with schema_path.open(encoding="utf-8") as schema_file:
             schema_data = json.load(schema_file)
     else:
         response = requests.get(schema, timeout=timeout)
