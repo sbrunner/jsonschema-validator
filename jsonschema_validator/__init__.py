@@ -77,7 +77,10 @@ def _extend_with_default(
 
 
 def validate(
-    filename: str, data: dict[str, Any], schema: dict[str, Any], default: bool = False
+    filename: str,
+    data: dict[str, Any],
+    schema: dict[str, Any],
+    default: bool = False,
 ) -> tuple[list[str], dict[str, Any]]:
     """
     Validate the YAML, with it's JSON schema.
@@ -131,17 +134,16 @@ def validate(
             for context in error.context:
                 results += format_error(context)
             return results
-        else:
-            rule = (
-                f" (rule: {'.'.join([str(i) for i in error.absolute_schema_path])})"
-                if error.absolute_schema_path
-                else ""
-            )
-            return [
-                f"-- {position} "
-                f"{'.'.join([str(i) for i in error.absolute_path] if error.absolute_path else '/')}: "
-                f"{error.message}{rule}"
-            ]
+        rule = (
+            f" (rule: {'.'.join([str(i) for i in error.absolute_schema_path])})"
+            if error.absolute_schema_path
+            else ""
+        )
+        return [
+            f"-- {position} "
+            f"{'.'.join([str(i) for i in error.absolute_path] if error.absolute_path else '/')}: "
+            f"{error.message}{rule}",
+        ]
 
     results = []
     for error in validator.iter_errors(data):

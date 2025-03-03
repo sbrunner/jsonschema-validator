@@ -5,14 +5,6 @@ inherits:
 ignore-paths:
   - jsonschema_validator/json_schema.py
 
-pydocstyle:
-  disable:
-    - D212 # Multi-line docstring summary should start at the first line
-    - D407 # Missing dashed underline after section
-    - D200 # One-line docstring should fit on one line with quotes
-    - D203 # 1 blank line required before class
-    - D202 # No blank lines allowed after function docstring
-
 pylint:
   disable:
     - too-many-arguments
@@ -26,16 +18,24 @@ pylint:
     - no-else-return
     - line-too-long # in conflict with Black
 
-pycodestyle:
-  disable:
-    - E501 # line too long, duplicated with Pylint
-    - N806 # variable in function should be lowercase, duplicated with Pylint
-
-pyroma:
-  run: true
 mypy:
   options:
     python-version: '3.9'
 ruff:
   options:
     target-version: py39
+pycodestyle:
+  disable:
+    - E501 # line too long, duplicated with Pylint
+    - N806 # variable in function should be lowercase, duplicated with Pylint
+
+pydocstyle:
+  disable:
+    - D212 # Multi-line docstring summary should start at the first line
+    - D407 # Missing dashed underline after section
+    - D200 # One-line docstring should fit on one line with quotes
+    - D203 # 1 blank line required before class
+    - D202 # No blank lines allowed after function docstring
+
+pyroma:
+  run: true
