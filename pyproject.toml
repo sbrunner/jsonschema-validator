@@ -41,7 +41,7 @@ classifiers = [
 jsonschema-validator = "jsonschema_validator:main"
 
 [tool.poetry.dependencies]
-python = ">=3.8,<4"
+python = ">=3.9,<4"
 jsonschema = "4.17.3"
 requests = "2.32.3"
 "ruamel.yaml" = "0.17.40"
