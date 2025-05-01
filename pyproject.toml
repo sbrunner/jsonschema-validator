@@ -41,7 +41,7 @@ classifiers = [
 jsonschema-validator = "jsonschema_validator:main"
 
 [tool.poetry.dependencies]
-python = ">=3.8,<4"
+python = ">=3.9,<4"
 jsonschema = "4.17.3"
 requests = "2.32.3"
 "ruamel.yaml" = "0.17.40"
@@ -55,7 +55,7 @@ prospector = { extras = ["with_mypy", "with_bandit", "with_pyroma"], version = "
 pytest = "7.2.2"
 pytest-cov = "4.0.0"
 types-requests = "2.28.11.17"
-types-pyyaml = "6.0.12.20241230"
+types-pyyaml = "6.0.12.20250402"
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning", "poetry-plugin-tweak-dependencies-version"]
