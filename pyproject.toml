@@ -10,7 +10,7 @@ version = "0.0.0"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4"
-jsonschema = "4.24.0"
+jsonschema = "4.25.0"
 requests = "2.32.4"
 "ruamel.yaml" = "0.18.14"
 
