@@ -15,7 +15,7 @@ def test_validate_ruamel():
 root:
   - 8
   - test: 8
-  - toto: 8"""
+  - toto: 8""",
         ),
         {
             "type": "object",
@@ -93,7 +93,7 @@ root:
                             "properties": {
                                 "test": {"type": "string"},
                             },
-                        }
+                        },
                     },
                 },
             },
