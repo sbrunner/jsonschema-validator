@@ -94,7 +94,7 @@ def validate(
     """
     schema_ref = schema.get("$schema", "default")
     schema_match = re.match(r"https?\:\/\/json\-schema\.org\/(.*)\/schema", schema_ref)
-    Validator = {  # pylint: disable=invalid-name
+    Validator = {  # pylint: disable=invalid-name # noqa: N806
         "draft-04": jsonschema.Draft4Validator,
         "draft-06": jsonschema.Draft6Validator,
         "draft-07": jsonschema.Draft7Validator,
