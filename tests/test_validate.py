@@ -5,7 +5,7 @@ import yaml
 import jsonschema_validator
 
 
-def test_validate_ruamel():
+def test_validate_ruamel() -> None:
     """Test."""
     ruamel_yaml = ruamel.yaml.YAML()
     errors, data = jsonschema_validator.validate(
@@ -38,7 +38,7 @@ root:
     ]
 
 
-def test_validate_yaml():
+def test_validate_yaml() -> None:
     """Test."""
     errors, data = jsonschema_validator.validate(
         "test.yaml",
@@ -71,7 +71,7 @@ root:
     ]
 
 
-def test_validate_deep():
+def test_validate_deep() -> None:
     """Test."""
     errors, data = jsonschema_validator.validate(
         "test.yaml",
@@ -104,7 +104,7 @@ root:
     ]
 
 
-def test_default():
+def test_default() -> None:
     """Test."""
     errors, data = jsonschema_validator.validate(
         "test.yaml",
@@ -122,12 +122,12 @@ def test_default():
     assert data == {"root": "abc"}
 
 
-def test_command_correct():
+def test_command_correct() -> None:
     """Test."""
     jsonschema_validator.main(["tests/correct.yaml"])
 
 
-def test_command_wrong():
+def test_command_wrong() -> None:
     """Test."""
     with pytest.raises(SystemExit) as result:
         jsonschema_validator.main(["tests/wrong.yaml"])
