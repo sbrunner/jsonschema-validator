@@ -1,5 +1,5 @@
 c2cciutils[checks,publish]==1.5.15
-pre-commit==4.2.0
+pre-commit==4.3.0
 importlib-metadata<8.0.0
 setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
 zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
