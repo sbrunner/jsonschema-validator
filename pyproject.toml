@@ -28,10 +28,10 @@ requests = "2.32.5"
 [tool.poetry.group.dev.dependencies]
 prospector-profile-duplicated = "1.10.5"
 prospector = { extras = ["with_mypy", "with_bandit", "with_pyroma", "with_ruff"], version = "1.17.3" }
-pytest = "8.4.1"
-pytest-cov = "6.2.1"
-types-requests = "2.32.4.20250809"
-types-pyyaml = "6.0.12.20250822"
+pytest = "8.4.2"
+pytest-cov = "6.3.0"
+types-requests = "2.32.4.20250913"
+types-pyyaml = "6.0.12.20250915"
 prospector-profile-utils = "1.26.5"
 
 [tool.poetry-dynamic-versioning]
