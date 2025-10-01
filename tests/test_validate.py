@@ -8,7 +8,7 @@ import jsonschema_validator
 def test_validate_ruamel() -> None:
     """Test."""
     ruamel_yaml = ruamel.yaml.YAML()
-    errors, data = jsonschema_validator.validate(
+    errors, _data = jsonschema_validator.validate(
         "test.yaml",
         ruamel_yaml.load(
             """
@@ -40,7 +40,7 @@ root:
 
 def test_validate_yaml() -> None:
     """Test."""
-    errors, data = jsonschema_validator.validate(
+    errors, _data = jsonschema_validator.validate(
         "test.yaml",
         yaml.load(
             """
@@ -73,7 +73,7 @@ root:
 
 def test_validate_deep() -> None:
     """Test."""
-    errors, data = jsonschema_validator.validate(
+    errors, _data = jsonschema_validator.validate(
         "test.yaml",
         yaml.load(
             """
@@ -106,7 +106,7 @@ root:
 
 def test_default() -> None:
     """Test."""
-    errors, data = jsonschema_validator.validate(
+    _errors, data = jsonschema_validator.validate(
         "test.yaml",
         {},
         {
