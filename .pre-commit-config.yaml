@@ -97,6 +97,7 @@ repos:
           - prospector-profile-utils==1.26.5 # pypi
           - pylint[spelling]==3.3.8 # pypi
           - ruff==0.14.7 # pypi
+          - mypy==1.18.2 # pypi
         exclude: |-
           (?x)(
             ^tests?/?
