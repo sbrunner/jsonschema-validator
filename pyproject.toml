@@ -1,5 +1,5 @@
 [tool.ruff]
-target-version = "py39"
+target-version = "py310"
 line-length = 110
 
 [tool.ruff.lint]
@@ -20,7 +20,7 @@ convention = "numpy"
 version = "0.0.0"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<4"
+python = ">=3.10,<4"
 jsonschema = "4.25.1"
 requests = "2.32.5"
 "ruamel.yaml" = "0.18.16"
@@ -28,7 +28,7 @@ requests = "2.32.5"
 [tool.poetry.group.dev.dependencies]
 prospector-profile-duplicated = "1.10.5"
 prospector = { extras = ["with_mypy", "with_bandit", "with_pyroma", "with_ruff"], version = "1.17.3" }
-pytest = "8.4.2"
+pytest = "9.0.2"
 pytest-cov = "7.0.0"
 types-requests = "2.32.4.20250913"
 types-pyyaml = "6.0.12.20250915"
@@ -68,7 +68,6 @@ classifiers = [
     'Operating System :: OS Independent',
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
     'Programming Language :: Python :: 3.12',
@@ -79,7 +78,7 @@ classifiers = [
 authors = [{name = "Stéphane Brunner",email = "stephane.brunner@gmail.com"}]
 packages = [{ include = "jsonschema_validator" }]
 include = ["jsonschema_validators/py.typed"]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = ["jsonschema", "requests", "ruamel.yaml"]
 
 [project.urls]
