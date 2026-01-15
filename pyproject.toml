@@ -26,7 +26,7 @@ requests = "2.32.5"
 "ruamel.yaml" = "0.19.0"
 
 [tool.poetry.group.dev.dependencies]
-prospector-profile-duplicated = "1.10.5"
+prospector-profile-duplicated = "1.11.0"
 prospector = { extras = ["with_mypy", "with_bandit", "with_pyroma", "with_ruff"], version = "1.17.3" }
 pytest = "8.4.2"
 pytest-cov = "7.0.0"
