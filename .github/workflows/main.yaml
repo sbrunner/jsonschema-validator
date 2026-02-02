@@ -30,8 +30,6 @@ jobs:
           fetch-depth: 0
 
       - uses: actions/setup-python@v6
-        with:
-          python-version: '3.14'
       - run: python3 -m pip install $(grep pre-commit== ci/requirements.txt)
 
       - uses: actions/cache@v5
@@ -61,8 +59,6 @@ jobs:
           fetch-depth: 0
 
       - uses: actions/setup-python@v6
-        with:
-          python-version: '3.14'
       - run: python3 -m pip install --requirement=ci/requirements.txt
 
       - run: make prospector

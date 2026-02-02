@@ -1,10 +1,10 @@
 [tool.ruff]
-target-version = "py39"
+target-version = "py311"
 line-length = 110
 
 [tool.ruff.lint]
 select = []
-ignore = ["ANN401", "C90", "D100", "D104", "D105", "D107", "D200", "D202", "D207", "D208", "D212", "E501", "EM101", "EM102", "ERA001", "FA", "FBT001", "FBT002", "FIX002", "I001", "PERF203", "PLR09", "PLR2004", "Q000", "S101", "SIM105", "T201", "TD002", "W293"]
+ignore = ["ANN401", "C90", "COM812", "D100", "D104", "D105", "D107", "D200", "D202", "D207", "D208", "D212", "E501", "EM101", "EM102", "ERA001", "FA", "FBT001", "FBT002", "FIX002", "I001", "PERF203", "PLR09", "PLR2004", "Q000", "S101", "SIM105", "T201", "TD002", "W293"]
 extend-select = ["UP", "I", "S", "B", "ALL"]
 
 [tool.ruff.lint.pydocstyle]
@@ -20,7 +20,7 @@ convention = "numpy"
 version = "0.0.0"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<4"
+python = ">=3.11,<4"
 jsonschema = "4.26.0"
 requests = "2.32.5"
 "ruamel.yaml" = "0.19.1"
@@ -68,8 +68,6 @@ classifiers = [
     'Operating System :: OS Independent',
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.9',
-    'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
     'Programming Language :: Python :: 3.12',
     'Programming Language :: Python :: 3.13',
@@ -79,7 +77,7 @@ classifiers = [
 authors = [{name = "Stéphane Brunner",email = "stephane.brunner@gmail.com"}]
 packages = [{ include = "jsonschema_validator" }]
 include = ["jsonschema_validators/py.typed"]
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 dependencies = ["jsonschema", "requests", "ruamel.yaml"]
 
 [project.urls]
