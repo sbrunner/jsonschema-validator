@@ -8,7 +8,7 @@ import sys
 import urllib.parse
 from collections.abc import Iterator
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 from warnings import warn
 
 import jsonschema
