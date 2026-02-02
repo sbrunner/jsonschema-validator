@@ -37,7 +37,7 @@ def _extend_with_default(
     def set_defaults(
         validator: "jsonschema.validators._DefaultTypesDeprecatingMetaClass",
         properties: dict[str, jsonschema_validator.json_schema.JSONSchemaItem],
-        instance: Optional[dict[str, Any]],
+        instance: dict[str, Any] | None,
         schema: jsonschema_validator.json_schema.JSONSchemaItem,
     ) -> Iterator[jsonschema.exceptions.ValidationError]:
         """
@@ -166,7 +166,7 @@ class ValidationError(Exception):
         self.data = data
 
 
-def main(argv: Optional[list[str]] = None) -> None:
+def main(argv: list[str] | None = None) -> None:
     """Check the JSON ort YAML files against the JSON schema files."""
     argparser = argparse.ArgumentParser("Check the JSON or YAML files against the JSON schema files")
     argparser.add_argument("--schema", help="The JSON schema")
@@ -192,7 +192,7 @@ def main(argv: Optional[list[str]] = None) -> None:
 
 def validate_file(
     file: Path,
-    schema: Optional[str],
+    schema: str | None,
     yaml: ruamel.yaml.YAML,
     timeout: int,
     schema_re: re.Pattern[str],
