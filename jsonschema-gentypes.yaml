@@ -16,4 +16,4 @@ generate:
     root_name: JSONSchema
     name_mapping:
       _CoreSchemaMetaSchemaObject: JSONSchemaItem
-python_version: '3.9'
+python_version: '3.10'
