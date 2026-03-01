@@ -26,13 +26,13 @@ requests = "2.32.5"
 "ruamel.yaml" = "0.19.1"
 
 [tool.poetry.group.dev.dependencies]
-prospector-profile-duplicated = "1.11.0"
+prospector-profile-duplicated = "1.12.0"
 prospector = { extras = ["with_mypy", "with_bandit", "with_pyroma", "with_ruff"], version = "1.18.0" }
 pytest = "8.4.2"
 pytest-cov = "7.0.0"
 types-requests = "2.32.4.20260107"
 types-pyyaml = "6.0.12.20250915"
-prospector-profile-utils = "1.26.5"
+prospector-profile-utils = "1.27.0"
 
 [tool.poetry-dynamic-versioning]
 enable = true
