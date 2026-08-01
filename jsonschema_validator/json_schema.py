@@ -1,3 +1,6 @@
+# Copyright (c) 2024, Camptocamp SA
+# SPDX-License-Identifier: BSD-2-Clause
+
 """Automatically generated file from a JSON schema."""
 
 from typing import Any, Literal, TypedDict, Union
