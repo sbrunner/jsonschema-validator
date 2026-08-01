@@ -30,8 +30,8 @@ prospector-profile-duplicated = "1.12.0"
 prospector = { extras = ["with_mypy", "with_bandit", "with_pyroma", "with_ruff"], version = "1.19.0" }
 pytest = "9.1.1"
 pytest-cov = "7.1.0"
-types-requests = "2.33.0.20260518"
-types-pyyaml = "6.0.12.20260518"
+types-requests = "2.33.0.20260712"
+types-pyyaml = "6.0.12.20260724"
 prospector-profile-utils = "1.27.0"
 
 [tool.poetry-dynamic-versioning]
@@ -88,5 +88,5 @@ repository = "https://github.com/sbrunner/jsonschema-validator"
 jsonschema-validator = "jsonschema_validator:main"
 
 [build-system]
-requires = ["poetry-core==2.4.0", "poetry-dynamic-versioning==1.10.0"]
+requires = ["poetry-core==2.4.1", "poetry-dynamic-versioning==1.10.0"]
 build-backend = "poetry.core.masonry.api"
