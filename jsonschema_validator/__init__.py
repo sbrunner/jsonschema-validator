@@ -1,4 +1,4 @@
-# Copyright (c) 2024, Camptocamp SA
+# Copyright (c) 2024-2026, Camptocamp SA
 # SPDX-License-Identifier: BSD-2-Clause
 
 """Module that offer some useful functions to validate the data against a JSON schema."""
