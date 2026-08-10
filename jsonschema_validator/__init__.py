@@ -1,3 +1,6 @@
+# Copyright (c) 2024-2026, Camptocamp SA
+# SPDX-License-Identifier: BSD-2-Clause
+
 """Module that offer some useful functions to validate the data against a JSON schema."""
 
 import argparse
@@ -140,9 +143,11 @@ def validate(
             else ""
         )
         return [
-            f"-- {position} "
-            f"{'.'.join([str(i) for i in error.absolute_path] if error.absolute_path else '/')}: "
-            f"{error.message}{rule}",
+            (
+                f"-- {position} "
+                f"{'.'.join([str(i) for i in error.absolute_path] if error.absolute_path else '/')}: "
+                f"{error.message}{rule}"
+            ),
         ]
 
     results = []
